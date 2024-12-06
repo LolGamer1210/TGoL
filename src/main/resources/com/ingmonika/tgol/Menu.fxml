@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.MenuController">
+    <top>
+        <Label alignment="CENTER" prefHeight="130.0" prefWidth="253.0" text="Título del Juego" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="36" />
+            </font>
+        </Label>
+    </top>
+
+    <left>
+        <VBox alignment="TOP_RIGHT" spacing="20" BorderPane.alignment="CENTER">
+            <TextField fx:id="player1Name" promptText="Nombre Jugador 1" />
+            <Label text="Tamaño del Grid"/>
+            <ChoiceBox fx:id="tamanioGrid" prefWidth="180">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Option 1" />
+                        <String fx:value="Option 2" />
+                        <String fx:value="Option 3" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+        </VBox>
+    </left>
+
+    <right>
+        <VBox spacing="20" BorderPane.alignment="CENTER">
+            <TextField fx:id="player2Name" promptText="Nombre Jugador 2" />
+            <CheckBox fx:id="player2Type" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" text="Computer player" />
+        </VBox>
+    </right>
+
+    <center>
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <Button fx:id="playButton" text="Jugar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="optionsButton" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Button fx:id="aboutButton" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
+            <Text fx:id="version" text="Version 0.1a" textAlignment="RIGHT"></Text>
+        </HBox>
+    </bottom>
+</BorderPane>
