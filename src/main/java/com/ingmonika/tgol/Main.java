@@ -1,6 +1,7 @@
 package com.ingmonika.tgol;
 
 import com.ingmonika.tgol.controladores.ControladorJuego;
+import com.ingmonika.tgol.utils.URLHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -25,23 +26,27 @@ public class Main extends Application {
         Console.setProjectName("TGoL");
         primaryStage = stage;
         appInstance = this;
+
+        // Pasando el HostServices al URLHelper
+        URLHelper.setHostServices(getHostServices());
+
         loadScene("Menu.fxml", "Menú Principal del Juego");
     }
 
     /**
-     * Loads a new scene into the primary stage.
+     * Carga una nueva escena al Stage.
      *
-     * @param fxml The FXML file to load.
+     * @param fxml El archivo FXML a cargar.
      */
     public static void loadScene(String fxml) {
         loadScene(fxml, primaryStage.getTitle());
     }
 
     /**
-     * Loads a new scene into the primary stage and changes the title.
+     * Carga una nueva escena al Stage y cambia el titulo de la ventana.
      *
-     * @param fxml  The FXML file to load.
-     * @param title The title of the window.
+     * @param fxml  El archivo FXML a cargar.
+     * @param title El nuevo título de la ventana.
      */
     public static void loadScene(String fxml, String title) {
         try {
@@ -49,17 +54,16 @@ public class Main extends Application {
             BorderPane root = loader.load();
             Scene scene = new Scene(root);
 
-            // Set stylesheets
+            // Cambiar el Stilo con CSS
             scene.getStylesheets().add(Main.class.getResource("styles.css").toExternalForm());
 
-            // Set the scene on the primary stage
+            // Cambiar escena en el Stage Primario
             primaryStage.setTitle(title);
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            // Controller interaction
+            // Interacciones con el controlar de ser necesarias
             Controlador controller = loader.getController();
-            controller.setHostServices(appInstance.getHostServices());
 
 
         } catch (IOException e) {
