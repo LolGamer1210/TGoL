@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 
-public class MenuController {
+public class ControladorJuego {
 
     @FXML
     private TextField player1Name;
@@ -36,14 +36,14 @@ public class MenuController {
     private Text version;
 
     @FXML
-    private ChoiceBox tamanioGrid;
+    private ChoiceBox gridSize;
 
     private HostServices hostServices;
-    private ObservableList tamanios = FXCollections.observableArrayList("5x5", "10x10","15x15","20x20");
+    private ObservableList sizes = FXCollections.observableArrayList("5x5", "10x10","15x15","20x20");
 
     @FXML
     private void initialize() {
-        tamanioGrid.setItems(tamanios);
+        gridSize.setItems(sizes);
         playButton.setOnAction(event -> {
             printButtonName(playButton);
             Console.log(Console.LogType.DEBUG, player1Name.getCharacters().toString());
