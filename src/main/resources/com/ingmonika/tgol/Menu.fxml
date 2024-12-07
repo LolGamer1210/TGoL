@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.MenuController">
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
+    <stylesheets> <URL value="@styles.css" /> </stylesheets>
+
     <top>
-        <Label alignment="CENTER" prefHeight="130.0" prefWidth="253.0" text="Título del Juego" BorderPane.alignment="CENTER">
+        <Label alignment="CENTER" prefHeight="150.0" prefWidth="300.0" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
             <font>
-                <Font size="36" />
+                <Font name="System Bold" size="36.0" />
             </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
         </Label>
     </top>
 
     <left>
-        <VBox alignment="TOP_RIGHT" spacing="20" BorderPane.alignment="CENTER">
+        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
             <TextField fx:id="player1Name" promptText="Nombre Jugador 1" />
-            <Label text="Tamaño del Grid"/>
-            <ChoiceBox fx:id="tamanioGrid" prefWidth="180">
+            <Label styleClass="text" text="Tamaño del Grid">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
+            <ChoiceBox fx:id="gridSize" prefWidth="180.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Option 1" />
@@ -30,9 +42,9 @@
     </left>
 
     <right>
-        <VBox spacing="20" BorderPane.alignment="CENTER">
+        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20" BorderPane.alignment="CENTER">
             <TextField fx:id="player2Name" promptText="Nombre Jugador 2" />
-            <CheckBox fx:id="player2Type" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" text="Computer player" />
+            <CheckBox fx:id="player2Type" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" styleClass="text" text="CPU" />
         </VBox>
     </right>
 
@@ -54,7 +66,7 @@
 
     <bottom>
         <HBox spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
-            <Text fx:id="version" text="Version 0.1a" textAlignment="RIGHT"></Text>
+            <Text fx:id="version" text="Version 0.1a" textAlignment="RIGHT" />
         </HBox>
     </bottom>
 </BorderPane>

@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import java.net.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorJuego">
+    <stylesheets> <URL value="@styles.css" /> </stylesheets>
 
-</AnchorPane>
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Button fx:id="back" text="Back"/>
+            <Label alignment="CENTER" prefHeight="150.0" prefWidth="300.0" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="36.0" />
+                </font>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </Label>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <Label styleClass="text" text="Jugador 1">
+                <font>
+                    <Font size="16.0" />
+                </font></Label>
+        </VBox>
+    </left>
+
+    <right>
+        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <Label styleClass="text" text="Jugador 2">
+                <font>
+                    <Font size="16.0" />
+                </font></Label>
+        </VBox>
+    </right>
+
+    <center>
+        <GridPane alignment="CENTER" hgap="20" vgap="20" GridPane.halignment="CENTER">
+            <!-- Create a 5x5 grid with visible borders -->
+            <columnConstraints>
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="20" />
+                <RowConstraints percentHeight="20" />
+            </rowConstraints>
+
+            <!-- Example of cells with borders -->
+            <Label fx:id="cell00" text="1,1" style="-fx-border-color: black; -fx-alignment: center;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="cell01" text="1,2" style="-fx-border-color: black; -fx-alignment: center;" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label fx:id="cell02" text="1,3" style="-fx-border-color: black; -fx-alignment: center;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <Label fx:id="cell03" text="1,4" style="-fx-border-color: black; -fx-alignment: center;" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label fx:id="cell04" text="1,5" style="-fx-border-color: black; -fx-alignment: center;" GridPane.rowIndex="0" GridPane.columnIndex="4"/>
+            <!-- Repeat for all other cells -->
+            <!-- Add here more cells until the grid is complete -->
+        </GridPane>
+    </center>
+
+    <bottom>
+        <HBox spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
+            <Text fx:id="version" text="Version 0.1a" textAlignment="RIGHT" />
+        </HBox>
+    </bottom>
+</BorderPane>

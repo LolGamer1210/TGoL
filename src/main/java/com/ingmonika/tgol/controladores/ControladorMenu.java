@@ -1,6 +1,8 @@
-package com.ingmonika.tgol;
+package com.ingmonika.tgol.controladores;
 
 import com.ingmonika.Console;
+import com.ingmonika.tgol.Main;
+import com.ingmonika.tgol.implementaciones.Controlador;
 import javafx.application.HostServices;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 
-public class ControladorJuego {
+public class ControladorMenu implements Controlador {
 
     @FXML
     private TextField player1Name;
@@ -48,6 +50,7 @@ public class ControladorJuego {
             printButtonName(playButton);
             Console.log(Console.LogType.DEBUG, player1Name.getCharacters().toString());
             Console.log(Console.LogType.DEBUG, player2Name.getCharacters().toString());
+            Main.loadScene("Juego.fxml");
         });
         optionsButton.setOnAction(event -> printButtonName(optionsButton));
         aboutButton.setOnAction(event -> printButtonName(aboutButton));
@@ -68,6 +71,7 @@ public class ControladorJuego {
         hostServices.showDocument(url);
     }
 
+    @Override
     public void setHostServices(HostServices hostServices) {
         this.hostServices = hostServices;
     }

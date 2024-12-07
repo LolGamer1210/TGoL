@@ -1,4 +1,8 @@
 package com.ingmonika.tgol.implementaciones;
 
-public class Controlador {
+import javafx.application.HostServices;
+
+public interface Controlador {
+
+    void setHostServices(HostServices hostServices);
 }
