@@ -1,8 +1,6 @@
 package com.ingmonika.tgol.implementaciones;
 
-import javafx.application.HostServices;
-
+///Interfaz vacía para interacción con varios controladores desde Main.
 public interface Controlador {
 
-    void setHostServices(HostServices hostServices);
 }

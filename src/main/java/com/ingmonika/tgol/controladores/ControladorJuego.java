@@ -3,6 +3,7 @@ package com.ingmonika.tgol.controladores;
 import com.ingmonika.Console;
 import com.ingmonika.tgol.Main;
 import com.ingmonika.tgol.implementaciones.Controlador;
+import com.ingmonika.tgol.utils.URLHelper;
 import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,10 +26,13 @@ public class ControladorJuego implements Controlador {
 
     @FXML
     private void initialize() {
+        //Botón para regresar al menú principal.
         back.setOnAction(event -> Main.loadScene("Menu.fxml"));
-        version.setOnMouseClicked(event -> openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 
-        // Add event handlers for cell clicks
+        //Versión
+        version.setOnMouseClicked(event -> URLHelper.openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+
+        // Handlers para clicks en las celdas.
         cell00.setOnMouseClicked(this::handleCellClick);
         cell01.setOnMouseClicked(this::handleCellClick);
         cell02.setOnMouseClicked(this::handleCellClick);
@@ -45,13 +49,5 @@ public class ControladorJuego implements Controlador {
 
     private void printButtonName(Button button) {
         Console.log(Console.LogType.DEBUG, button.getText());
-    }
-
-    private void openURL(String url) {
-        hostServices.showDocument(url);
-    }
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
     }
 }
