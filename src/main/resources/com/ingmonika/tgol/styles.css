@@ -1,61 +1,77 @@
+/* Estilo para botones */
 .button {
-    -fx-background-color: linear-gradient(#f2f2f2, #d6d6d6), linear-gradient(#fffbff, #f2f2f2);
-    -fx-background-radius: 8, 7;
-    -fx-padding: 8 15 15 15;
-    -fx-text-fill: #2a2a2a;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-border-color: #b3b3b3;
-    -fx-border-width: 2px;
-    -fx-border-radius: 8;
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 2 , 2 );
+    -fx-background-color: linear-gradient(#7289DA, #5865F2); /* Discord blue gradient */
+    -fx-background-radius: 5; /* Rounded corners */
+    -fx-padding: 8 15; /* Padding */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 14px; /* Font size */
+    -fx-font-weight: bold; /* Bold font */
+    -fx-border-color: #23272A; /* Border color similar to Discord's dark background */
+    -fx-border-width: 1; /* Border width */
+    -fx-border-radius: 5; /* Rounded border */
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.3), 5, 0.0, 2, 2); /* Shadow effect */
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(#e7e7e7, #c1c1c1), linear-gradient(#ffffff, #e7e7e7);
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 6, 0.0 , 2 , 2 );
-    -fx-border-color: blue;
-    -fx-border-width: 2;
+    -fx-background-color: linear-gradient(#677BC4, #5562D4); /* Slightly darker gradient on hover */
+    -fx-border-color: #7289DA; /* Border color on hover */
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.5), 6, 0.0, 2, 2); /* Enhanced shadow on hover */
 }
 
 .button:focused {
-    -fx-background-color: linear-gradient(#e7e7e7, #c1c1c1), linear-gradient(#ffffff, #e7e7e7);
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 6, 0.0 , 2 , 2 );
-    -fx-border-color: blue;
-    -fx-border-width: 2;
+    -fx-background-color: linear-gradient(#677BC4, #5562D4); /* Slightly darker gradient on focus */
+    -fx-border-color: #7289DA; /* Border color on focus */
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.5), 6, 0.0, 2, 2); /* Enhanced shadow on focus */
 }
 
 .button:pressed {
-    -fx-background-color: linear-gradient(#d6d6d6, #a3a3a3), linear-gradient(#e7e7e7, #d6d6d6);
-    -fx-effect: innershadow( one-pass-box , rgba(0,0,0,0.8) , 6, 0.0 , 2 , 2 );
+    -fx-background-color: linear-gradient(#4C5DBA, #3B51C2); /* Even darker gradient on press */
+    -fx-effect: innershadow(one-pass-box, rgba(0, 0, 0, 0.6), 6, 0.0, 2, 2); /* Inner shadow effect */
 }
 
+/* Estilo para campos de texto */
 .text-field {
-    -fx-background-color: #ffffff;
-    -fx-border-color: #a9a9a9;
-    -fx-border-radius: 8;
-    -fx-padding: 5;
-    -fx-font-size: 14px;
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 2 , 2 );
+    -fx-background-color: #2C2F33; /* Darker background similar to Discord */
+    -fx-border-color: #23272A; /* Dark border */
+    -fx-border-radius: 5; /* Rounded corners */
+    -fx-padding: 5; /* Padding */
+    -fx-font-size: 14px; /* Font size */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.3), 5, 0.0, 2, 2); /* Shadow effect */
 }
 
+/* Estilo para etiquetas */
 .label {
-    -fx-text-fill: #2a2a2a;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-padding: 10;
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 20px; /* Font size */
+    -fx-font-weight: bold; /* Bold font */
+    -fx-padding: 10; /* Padding */
 }
 
+/* Estilo para títulos */
 .title {
-    -fx-text-fill: #2a2a2a;
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
-    -fx-padding: 10;
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 32px; /* Larger font size */
+    -fx-font-weight: bold; /* Bold font */
+    -fx-padding: 10; /* Padding */
 }
 
+/* Estilo para texto general */
 .text {
-    -fx-text-fill: #2a2a2a;
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-    -fx-padding: 10;
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-font-size: 16px; /* Font size */
+    -fx-font-weight: bold; /* Bold font */
+    -fx-padding: 10; /* Padding */
+}
+
+/* Estilo para el fondo */
+.root {
+    -fx-background-color: #2C2F33; /* Darker background similar to Discord */
+}
+
+/* Estilo para la barra superior */
+.title-bar {
+    -fx-background-color: #23272A; /* Dark background for title bar */
+    -fx-text-fill: #ffffff; /* White text */
+    -fx-padding: 5; /* Padding for the title bar */
 }

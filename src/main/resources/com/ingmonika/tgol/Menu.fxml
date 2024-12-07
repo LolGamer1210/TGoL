@@ -3,22 +3,15 @@
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import javafx.collections.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
+<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
     <stylesheets> <URL value="@styles.css" /> </stylesheets>
 
     <top>
-        <Label alignment="CENTER" prefHeight="150.0" prefWidth="300.0" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
-            <font>
-                <Font name="System Bold" size="36.0" />
-            </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
+        <Label alignment="CENTER" prefHeight="150.0" prefWidth="320.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
         </Label>
     </top>
 
