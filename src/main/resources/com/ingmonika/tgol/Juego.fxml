@@ -49,7 +49,7 @@
     <bottom>
         <VBox fx:id="vboxAbajo" alignment="CENTER" spacing="20" BorderPane.alignment="CENTER">
             <Label fx:id="consolaJuego" alignment="CENTER" contentDisplay="CENTER" text="Bienvenido, es hora de Jugar!" textAlignment="CENTER" />
-            <Text fx:id="version" nodeOrientation="LEFT_TO_RIGHT" text="Version 0.2a" textAlignment="RIGHT" />
+            <Text fx:id="version" nodeOrientation="LEFT_TO_RIGHT" text="Version 0.3a" textAlignment="RIGHT" />
         </VBox>
     </bottom>
 </BorderPane>

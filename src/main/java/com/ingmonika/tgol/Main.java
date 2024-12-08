@@ -22,7 +22,7 @@ import com.ingmonika.tgol.clases.Jugador;
 import java.io.IOException;
 
 public class Main extends Application {
-    public String buildVersion = "0.1a";
+    public String buildVersion = "0.3a";
     private static Stage primaryStage;
     private static Application appInstance;
     private static Jugador[] jugadores;

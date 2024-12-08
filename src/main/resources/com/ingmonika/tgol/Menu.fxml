@@ -59,7 +59,7 @@
 
     <bottom>
         <VBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
-            <Text fx:id="version" text="Version 0.2a" textAlignment="RIGHT" />
+            <Text fx:id="version" text="Version 0.3a" textAlignment="RIGHT" />
         </VBox>
     </bottom>
 </BorderPane>
