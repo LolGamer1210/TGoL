@@ -17,12 +17,12 @@
 
     <left>
         <VBox prefHeight="434.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <TextField fx:id="player1Name" promptText="Nombre Jugador 1" />
+            <TextField fx:id="nombreJugador1" promptText="Nombre Jugador 1" />
             <Label styleClass="text" text="Tamaño del Grid">
             <font>
                <Font size="16.0" />
             </font></Label>
-            <ChoiceBox fx:id="gridSize" prefWidth="180.0">
+            <ChoiceBox fx:id="gridSize" prefWidth="180.0" styleClass="combo-box">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Option 1" />
@@ -36,16 +36,16 @@
 
     <right>
         <VBox prefHeight="434.0" prefWidth="180.0" spacing="20" BorderPane.alignment="CENTER">
-            <TextField fx:id="player2Name" promptText="Nombre Jugador 2" />
-            <CheckBox fx:id="player2Type" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" styleClass="text" text="CPU" />
+            <TextField fx:id="nombreJugador2" promptText="Nombre Jugador 2" />
+            <CheckBox fx:id="tipoJugador2" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" styleClass="text" text="CPU" />
         </VBox>
     </right>
 
     <center>
         <GridPane alignment="CENTER" hgap="20" vgap="20">
-            <Button fx:id="playButton" text="Jugar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button fx:id="optionsButton" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button fx:id="aboutButton" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Button fx:id="botonJugar" text="Jugar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="botonOpciones" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Button fx:id="botonAcercaDe" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
@@ -58,8 +58,8 @@
     </center>
 
     <bottom>
-        <HBox spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
-            <Text fx:id="version" text="Version 0.1a" textAlignment="RIGHT" />
-        </HBox>
+        <VBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
+            <Text fx:id="version" text="Version 0.2a" textAlignment="RIGHT" />
+        </VBox>
     </bottom>
 </BorderPane>
