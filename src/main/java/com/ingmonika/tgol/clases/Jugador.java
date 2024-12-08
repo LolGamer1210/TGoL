@@ -7,6 +7,7 @@ public class Jugador {
     private char letra;
     private boolean esCPU;
     private int numero;
+    private String titulo;
 
     //Constructor
     public Jugador(String nombre, char letra, boolean esCPU, int numero) {
@@ -15,6 +16,7 @@ public class Jugador {
         this.letra = letra;
         this.esCPU = esCPU;
         this.numero = numero;
+        this.titulo = "";
     }
 
     //Getters y Setters
@@ -56,6 +58,14 @@ public class Jugador {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     //Método para incrementar la puntuación
