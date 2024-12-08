@@ -1,5 +1,7 @@
 package com.ingmonika;
 
+import java.util.Arrays;
+
 /**
  * I hate using System.out.print(), so I'll be using my own console to log things.
  * It's still Sout() at its core, but it's way easier to use.
@@ -66,15 +68,42 @@ public class Console {
         Console.defaultType = defaultType;
     }
 
-    // Log message with default log type
+    // Log message log type
     /**
-     * Logs a message to the console using the default LogType.
+     * Logs a array of Strings to the console.
      *
-     * @param message the message to log
+     * @param message the array of Strings to log, the first may be the LogType.
      */
-    public static void log(String message) {
-        log(defaultType, message);
+    public static void log(String ...message) {
+        if (message.length > 0) {
+            try {
+                LogType logType = LogType.valueOf(message[0].toUpperCase());
+                log(logType, Arrays.copyOfRange(message, 1, message.length));
+            } catch (IllegalArgumentException e) {
+                log(defaultType, message);
+            }
+        } else {
+            log(defaultType, message);
+        }
     }
+
+    ///Logs a String to the console.
+    /// @param message the String to be logged, the first word may be the LogType.
+    public static void log(String message) {
+        // Separar la primera palabra del resto de la cadena
+        String[] parts = message.split(" ", 2);
+        String potentialLogType = parts[0].toUpperCase();
+        String logMessage = parts.length > 1 ? parts[1] : "";
+
+        try {
+            LogType logType = LogType.valueOf(potentialLogType);
+            log(logType, logMessage);
+        } catch (IllegalArgumentException e) {
+            log(defaultType, message);
+        }
+    }
+
+
 
     // Log message with specified log type
     /**
@@ -83,7 +112,7 @@ public class Console {
      * @param type the LogType to use
      * @param message the message to log
      */
-    public static void log(LogType type, String message) {
+    public static void log(LogType type, String ...message) {
         String prefix;
         String color;
 
@@ -108,9 +137,9 @@ public class Console {
         }
 
         if (projectName != null) {
-            System.out.println(color + "[" + projectName + "] " + prefix + " " + message + RESET);
+            System.out.println(color + "[" + projectName + "] " + prefix + " " + String.join(" ",message) + RESET);
         } else {
-            System.out.println(color + prefix + " " + message + RESET);
+            System.out.println(color + prefix + " " + String.join(" ",message) + RESET);
         }
     }
 }
