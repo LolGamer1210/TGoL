@@ -2,9 +2,11 @@ package com.ingmonika.tgol.controladores;
 
 import com.ingmonika.Console;
 import com.ingmonika.tgol.Main;
+import com.ingmonika.tgol.clases.CPU;
 import com.ingmonika.tgol.clases.Jugador;
 import com.ingmonika.tgol.implementaciones.Controlador;
 import com.ingmonika.tgol.clases.Settings;
+import com.ingmonika.tgol.utils.JsonHelper;
 import com.ingmonika.tgol.utils.SizeConverter;
 import com.ingmonika.tgol.utils.URLHelper;
 
@@ -17,6 +19,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
 
 public class ControladorMenu implements Controlador {
 
@@ -46,18 +50,26 @@ public class ControladorMenu implements Controlador {
     private ChoiceBox<String> gridSize;
 
     private ObservableList<String> sizes = FXCollections.observableArrayList("5x5", "10x10", "15x15", "20x20");
-    private Settings gameSettings = Main.getGameSettings();
+    private Settings gameSettings;
 
     @FXML
     private void initialize() {
+        //Importando ajustes.
+        gameSettings = Main.getGameSettings();
+
+        //Cambiando versión
+        version.setText(Main.getBuildVersion());
+
         // Añade el dropdown de tamaños para el Grid
         gridSize.setItems(sizes);
-        gridSize.setValue(SizeConverter.intToString(gameSettings.selectedSize));
+        gridSize.setValue(SizeConverter.intToString(gameSettings.tamanioSeleccionado));
 
+        //Cargando los ultimos nombres de los jugadores.
+        nombreJugador1.setText(gameSettings.getNombreJ1());
+        nombreJugador2.setText(gameSettings.getNombreJ2());
 
         // Botón de Jugar
         botonJugar.setOnAction(event -> {
-
             //Debug
             printButtonName(botonJugar);
             Console.log(Console.LogType.DEBUG, nombreJugador1.getCharacters().toString());
@@ -66,8 +78,9 @@ public class ControladorMenu implements Controlador {
             //Configura los jugadores
             configurarJugadores();
 
-            //Define los ajustes y cambia al juego.
-            gameSettings.setSelectedSize(SizeConverter.stringToInt(gridSize.getValue()));
+            //Define y guarda los ajustes y cambia al juego.
+            gameSettings.setTamanioSeleccionado(SizeConverter.stringToInt(gridSize.getValue()));
+            JsonHelper.guardarSettings(gameSettings);
             Main.loadScene("Juego.fxml");
         });
 
@@ -84,6 +97,8 @@ public class ControladorMenu implements Controlador {
         });
 
         // Checkbox para cambiar el jugador 2 a CPU
+        tipoJugador2.setSelected(gameSettings.isJugadorCPU());
+        nombreJugador2.setDisable(gameSettings.isJugadorCPU());
         tipoJugador2.selectedProperty().addListener((observable, oldValue, newValue) -> {
             nombreJugador2.setDisable(newValue);
             if (newValue) {
@@ -91,6 +106,8 @@ public class ControladorMenu implements Controlador {
             } else {
                 Console.log(Console.LogType.DEBUG, "Player 2 set to player");
             }
+            gameSettings.setJugadorCPU(newValue);
+            JsonHelper.guardarSettings(gameSettings);
         });
 
         // Versión
@@ -101,7 +118,7 @@ public class ControladorMenu implements Controlador {
     ///La letra que se les asigna es al azar.
     private void configurarJugadores(){
         //Generar letras L y O en orden aleatorio.
-        Character[] letra = {'L', 'O'};
+        String[] letra = {"L", "O"};
         Collections.shuffle(Arrays.asList(letra));
 
         //Revisa si los nombres de los jugadores están vacíos.
@@ -113,6 +130,9 @@ public class ControladorMenu implements Controlador {
         if(nombreJugador2.getCharacters().isEmpty()){
             nombre2 = "Jugador 2";
         } else {nombre2 = nombreJugador2.getCharacters().toString();};
+
+        gameSettings.setNombreJ1(nombre1);
+        gameSettings.setNombreJ2(nombre2);
 
         Jugador jugador1 = new Jugador(
                 nombre1,
@@ -127,13 +147,8 @@ public class ControladorMenu implements Controlador {
                 1
         );
 
-        //Creando areglo de jugadores.
-        Jugador[] jugadores = new Jugador[2];
-        jugadores[0] = jugador1;
-        jugadores[1] = jugador2;
-
         //Setteando en Main.
-        Main.setJugadores(jugadores);
+        Main.setJugadores(new Jugador[]{jugador1,jugador2});
     }
 
     ///Imprime el nombre del botón en la consola.
@@ -146,21 +161,65 @@ public class ControladorMenu implements Controlador {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle("Opciones");
 
+        ColorPicker colorJugador1 = new ColorPicker();
+        ColorPicker colorJugador2= new ColorPicker();
+        ColorPicker colorLOL= new ColorPicker();
+        ColorPicker colorUltima = new ColorPicker();
+        CheckBox CPUDificil = new CheckBox("CPU en modo dificil");
+
+        //Cargando los ajustes guardados.
+        colorJugador1.setValue(Color.web(gameSettings.getColorJ1()));
+        colorJugador2.setValue(Color.web(gameSettings.getColorJ2()));
+        colorLOL.setValue(Color.web(gameSettings.getColorLOL()));
+        colorUltima.setValue(Color.web(gameSettings.getColorUltima()));
+
+        //Añadir listeners para cambiar ajustes.
+        colorJugador1.setOnAction(e -> {
+            String color = convertirColorHexadecimal(colorJugador1.getValue().toString());
+            gameSettings.setColorJ1(color);
+            Console.log("Color del jugador 1 cambiado a: " + color);
+        });
+        colorJugador2.setOnAction(e -> {
+            String color = convertirColorHexadecimal(colorJugador2.getValue().toString());
+            gameSettings.setColorJ2(color);
+            Console.log("Color del jugador 2 cambiado a: " + color);
+        });
+        colorLOL.setOnAction(e -> {
+            String color = convertirColorHexadecimal(colorLOL.getValue().toString());
+            gameSettings.setColorLOL(color);
+            Console.log("Color de LOL cambiado a: " + color);
+        });
+        colorUltima.setOnAction(e -> {
+            String color = convertirColorHexadecimal(colorUltima.getValue().toString());
+            gameSettings.setColorUltima(color);
+            Console.log("Color del ultimo movimiento cambiado a: " + color);
+        });
+        CPUDificil.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            gameSettings.setCPUDificil(newValue);
+            JsonHelper.guardarSettings(gameSettings);
+            Console.log("Se cambió el CPU a dificil!");
+        });
+
         VBox content = new VBox(10);
         content.getChildren().addAll(
-                new Label("Opción 1"),
-                new CheckBox("Habilitar característica A"),
-                new Label("Opción 2"),
-                new CheckBox("Habilitar característica B"),
-                new Label("Opción 3"),
-                new CheckBox("Habilitar característica C")
+                new Label("Seleccione color del jugador 1:"),
+                colorJugador1,
+                new Label("Seleccione color del jugador 2:"),
+                colorJugador2,
+                new Label("Seleccione color de los LOL:"),
+                colorLOL,
+                new Label("Seleccione color del último movimiento:"),
+                colorUltima,
+                CPUDificil
         );
 
         dialog.getDialogPane().setContent(content);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
 
         dialog.showAndWait();
+        JsonHelper.guardarSettings(gameSettings);
     }
+
 
     ///Alerta con la información para "Acerca de".
     private void acercaDe(Event event) {
@@ -170,4 +229,12 @@ public class ControladorMenu implements Controlador {
         alert.setContentText("Creado por: \nSaid Chacón - 20222130041\nGordito 1\nPelón 2");
         alert.showAndWait();
     }
+
+    //Función auxiliar para el colorPicker.
+    /// Convierte un color del formato "0xb31a1aff" a formato hexadecimal "#RRGGBB".
+    private String convertirColorHexadecimal(String colorPickerString) {
+        String hexColor = colorPickerString.substring(2, 8).toUpperCase();
+        return "#" + hexColor;
+    }
+
 }

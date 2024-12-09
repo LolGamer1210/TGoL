@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.net.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
-    <stylesheets> <URL value="@styles.css" /> </stylesheets>
-
+<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
     <top>
         <Label alignment="CENTER" prefHeight="150.0" prefWidth="320.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
         </Label>
@@ -43,9 +40,9 @@
 
     <center>
         <GridPane alignment="CENTER" hgap="20" vgap="20">
-            <Button fx:id="botonJugar" text="Jugar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button fx:id="botonOpciones" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button fx:id="botonAcercaDe" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Button fx:id="botonJugar" alignment="CENTER" contentDisplay="CENTER" text="Jugar" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Button fx:id="botonAcercaDe" alignment="CENTER" contentDisplay="CENTER" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
@@ -59,7 +56,7 @@
 
     <bottom>
         <VBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
-            <Text fx:id="version" text="Version 0.3a" textAlignment="RIGHT" />
+            <Text fx:id="version" text="Version" textAlignment="RIGHT" />
         </VBox>
     </bottom>
 </BorderPane>
