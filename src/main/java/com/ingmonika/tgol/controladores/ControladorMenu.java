@@ -169,6 +169,7 @@ public class ControladorMenu {
         colorJugador2.setValue(Color.web(gameSettings.getColorJ2()));
         colorLOL.setValue(Color.web(gameSettings.getColorLOL()));
         colorUltima.setValue(Color.web(gameSettings.getColorUltima()));
+        CPUDificil.setSelected(gameSettings.isCPUDificil());
 
         //Añadir listeners para cambiar ajustes.
         colorJugador1.setOnAction(_ -> {
@@ -223,7 +224,7 @@ public class ControladorMenu {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("The Game of LOL");
         alert.setHeaderText("Proyecto de Programación 2 - IS-210-1700");
-        alert.setContentText("Creado por: \nSaid Chacón - 20222130041\nDaniel Reyes - 19671210072\nPelón 2");
+        alert.setContentText("Creado por: \nSaid Chacón - 20222130041\nDaniel Reyes - 20191032556");
         alert.showAndWait();
     }
 
