@@ -1,62 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
+<BorderPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorMenu">
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
+
     <top>
-        <Label alignment="CENTER" prefHeight="150.0" prefWidth="320.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
-        </Label>
+        <Label alignment="CENTER" prefHeight="150.0" prefWidth="455.0" style="-fx-font-size: 36;" styleClass="title" text="¡LOL OF LEGENDS!" textAlignment="JUSTIFY" textFill="#6a1b9a" textOverrun="CLIP" BorderPane.alignment="CENTER" />
     </top>
 
-    <left>
-        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <TextField fx:id="nombreJugador1" promptText="Nombre Jugador 1" />
-            <Label styleClass="text" text="Tamaño del Grid">
-            <font>
-               <Font size="16.0" />
-            </font></Label>
-            <ChoiceBox fx:id="gridSize" prefWidth="180.0" styleClass="combo-box">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Option 1" />
-                        <String fx:value="Option 2" />
-                        <String fx:value="Option 3" />
-                    </FXCollections>
-                </items>
-            </ChoiceBox>
-        </VBox>
-    </left>
-
-    <right>
-        <VBox prefHeight="434.0" prefWidth="180.0" spacing="20" BorderPane.alignment="CENTER">
-            <TextField fx:id="nombreJugador2" promptText="Nombre Jugador 2" />
-            <CheckBox fx:id="tipoJugador2" alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefWidth="110.0" styleClass="text" text="CPU" />
-        </VBox>
-    </right>
-
     <center>
-        <GridPane alignment="CENTER" hgap="20" vgap="20">
-            <Button fx:id="botonJugar" alignment="CENTER" contentDisplay="CENTER" text="Jugar" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" text="Opciones" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button fx:id="botonAcercaDe" alignment="CENTER" contentDisplay="CENTER" text="Acerca de" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-         <columnConstraints>
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-        </GridPane>
+        <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER" VBox.vgrow="ALWAYS">
+            <VBox alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="ALWAYS">
+                <TextField fx:id="nombreJugador1" promptText="Nombre Jugador 1" styleClass="proyectoTexto" stylesheets="@styles.css" />
+                <TextField fx:id="nombreJugador2" promptText="Nombre Jugador 2" styleClass="proyectoTexto" />
+                <CheckBox fx:id="tipoJugador2" text="CPU" />
+                <Label text="Tamaño del Grid o Tablero:">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="gridSize" prefWidth="180.0" />
+            </VBox>
+
+            <VBox alignment="CENTER_RIGHT" spacing="40.0" VBox.vgrow="ALWAYS">
+                <Button fx:id="botonJugar" styleClass="custom-button" text="Jugar" />
+                <Button fx:id="botonOpciones" styleClass="custom-button" text="Opciones" />
+                <Button fx:id="botonAcercaDe" styleClass="custom-button" text="Acerca de" />
+            </VBox>
+        </HBox>
     </center>
 
     <bottom>
         <VBox alignment="CENTER" spacing="20" BorderPane.alignment="BOTTOM_RIGHT">
-            <Text fx:id="version" text="Version" textAlignment="RIGHT" />
+            <Text fx:id="version" text="Proyecto final de Programacion II" textAlignment="RIGHT" />
         </VBox>
     </bottom>
 </BorderPane>

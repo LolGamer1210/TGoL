@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorJuego">
+<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ingmonika.tgol.controladores.ControladorJuego">
     <top>
         <HBox fx:id="hboxArriba" alignment="CENTER" spacing="10" stylesheets="@styles.css">
-            <Button fx:id="atras" alignment="TOP_LEFT" text="Atrás" />
-            <Label alignment="CENTER" prefHeight="150.0" prefWidth="320.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@styles.css" text="The Game of LOL" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
+            <Button fx:id="atras" alignment="TOP_LEFT" styleClass="custom-button" stylesheets="@styles.css" text="Atrás" />
+            <Label alignment="CENTER" prefHeight="150.0" prefWidth="320.0" style="-fx-font-size: 36;" styleClass="title" stylesheets="@styles.css" text="LOL OF LEGENDS" textAlignment="JUSTIFY" textOverrun="CLIP" BorderPane.alignment="CENTER">
             </Label>
         </HBox>
     </top>
@@ -18,14 +18,14 @@
         <VBox fx:id="vboxIzquierda" prefHeight="368.0" prefWidth="220.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
             <HBox>
                 <VBox prefHeight="94.0" prefWidth="168.0">
-                   <children>
-                          <Label fx:id="tituloJugador1" prefHeight="46.0" prefWidth="124.0" styleClass="text" text="Jugador 1">
-                              <font>
-                                  <Font size="16.0" />
-                              </font>
-                          </Label>
-                         <Label fx:id="puntuacionJ1" text="Puntuación: 0" />
-                   </children>
+                    <children>
+                        <Label fx:id="tituloJugador1" prefHeight="46.0" prefWidth="124.0" styleClass="text" text="Jugador 1">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="puntuacionJ1" text="Puntuación: 0" />
+                    </children>
                 </VBox>
                 <ImageView fx:id="indicadorTurnoJugador1" fitHeight="90.0" fitWidth="68.0" preserveRatio="true">
                     <image>
@@ -40,25 +40,25 @@
 
     <right>
         <VBox fx:id="vboxDerecha" alignment="TOP_RIGHT" prefHeight="368.0" prefWidth="220.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
-         <HBox alignment="TOP_RIGHT">
-            <children>
-                <ImageView fx:id="indicadorTurnoJugador2" fitHeight="90.0" fitWidth="67.0" preserveRatio="true" visible="false">
-                    <image>
-                        <Image url="@your turn.gif" />
-                    </image>
-                </ImageView>
-               <VBox alignment="TOP_RIGHT" prefHeight="93.0" prefWidth="170.0">
-                  <children>
-                        <Label fx:id="tituloJugador2" alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="46.0" prefWidth="139.0" styleClass="text" text="Jugador 2">
-                            <font>
-                                <Font size="16.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="puntuacionJ2" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="139.0" text="Puntuación: 0" />
-                  </children>
-               </VBox>
-            </children>
-         </HBox>
+            <HBox alignment="TOP_RIGHT">
+                <children>
+                    <ImageView fx:id="indicadorTurnoJugador2" fitHeight="90.0" fitWidth="67.0" preserveRatio="true" visible="false">
+                        <image>
+                            <Image url="@your turn.gif" />
+                        </image>
+                    </ImageView>
+                    <VBox alignment="TOP_RIGHT" prefHeight="93.0" prefWidth="170.0">
+                        <children>
+                            <Label fx:id="tituloJugador2" alignment="TOP_RIGHT" contentDisplay="TOP" prefHeight="46.0" prefWidth="139.0" styleClass="text" text="Jugador 2">
+                                <font>
+                                    <Font size="16.0" />
+                                </font>
+                            </Label>
+                            <Label fx:id="puntuacionJ2" alignment="CENTER_RIGHT" prefHeight="46.0" prefWidth="139.0" text="Puntuación: 0" />
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
             <Text text="Ultimos movimientos: " />
             <TextArea fx:id="ultimoMovimientoJugador2" editable="false" prefHeight="260.0" prefWidth="202.0" text="&#10;" />
         </VBox>
