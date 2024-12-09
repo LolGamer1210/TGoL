@@ -1,5 +1,6 @@
 package com.ingmonika.tgol;
 
+import com.ingmonika.tgol.utils.JsonHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,7 +23,7 @@ import com.ingmonika.tgol.clases.Jugador;
 import java.io.IOException;
 
 public class Main extends Application {
-    public String buildVersion = "0.3a";
+    public static String buildVersion = "Versión 1.1b";
     private static Stage primaryStage;
     private static Application appInstance;
     private static Jugador[] jugadores;
@@ -37,8 +38,15 @@ public class Main extends Application {
         Console.setProjectName("TGoL");
         Console.setDefaultType(Console.LogType.DEBUG);
 
-        //Creando ajustes iniciales
-        gameSettings = new Settings(5);
+        //Creando ajustes iniciales}
+        gameSettings = JsonHelper.leerSettings();
+
+        if(gameSettings == null){
+            Console.log("No se pudo leer el archivo de configuraciones! Creando nuevo archivo.");
+            gameSettings = new Settings();
+            JsonHelper.guardarSettings(gameSettings);
+        }
+
 
         primaryStage = stage;
         appInstance = this;
@@ -69,9 +77,6 @@ public class Main extends Application {
             // Interacciones con el controlador de ser necesarias
             Controlador controller = loader.getController();
 
-            // Cambiar el Stilo con CSS
-            scene.getStylesheets().add(Main.class.getResource("styles.css").toExternalForm());
-
             // Cambiar escena en el Stage Primario
             primaryStage.setTitle(title);
             primaryStage.setScene(scene);
@@ -101,6 +106,12 @@ public class Main extends Application {
     public static void setJugadores(Jugador[] jugadores) {
         Main.jugadores = jugadores;
     }
+
+    ///Retorna la versión configurada en Main.
+    public static String getBuildVersion() {
+        return buildVersion;
+    }
+
 
     public static void main(String[] args) {
         launch(args);
