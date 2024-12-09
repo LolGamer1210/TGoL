@@ -4,7 +4,6 @@ import com.ingmonika.Console;
 import com.ingmonika.tgol.Main;
 import com.ingmonika.tgol.clases.CPU;
 import com.ingmonika.tgol.clases.Jugador;
-import com.ingmonika.tgol.implementaciones.Controlador;
 import com.ingmonika.tgol.utils.URLHelper;
 import com.ingmonika.tgol.clases.Settings;
 
@@ -16,13 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
 import java.util.*;
 
-public class ControladorJuego implements Controlador {
+public class ControladorJuego {
 
     @FXML
     public Label consolaJuego;
@@ -95,10 +92,10 @@ public class ControladorJuego implements Controlador {
         jugadorActual = jugadores[0];
 
         //Botón para regresar al menú principal.
-        atras.setOnAction(event -> Main.loadScene("Menu.fxml"));
+        atras.setOnAction(_ -> Main.loadScene("Menu.fxml"));
 
         //Versión
-        version.setOnMouseClicked(event -> URLHelper.openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
+        version.setOnMouseClicked(_ -> URLHelper.openURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ"));
 
         //Crear grid según el tamaño seleccionado en el menú
         int gridSize = gameSettings.tamanioSeleccionado;
@@ -121,7 +118,7 @@ public class ControladorJuego implements Controlador {
                 button.setStyle("-fx-font-size: " + tamanioFuente + "px;");
 
                 final int x = i, y = j;
-                button.setOnAction(e -> jugadorActual.realizarMovimiento(x, y));
+                button.setOnAction(_ -> jugadorActual.realizarMovimiento(x, y));
                 botones[i][j] = button;
                 grid.add(button, j, i);
             }
@@ -170,7 +167,7 @@ public class ControladorJuego implements Controlador {
         if(jugadorActual.esCPU()){
             jugadorActual.realizarMovimiento(0,0); //Coordenadas se ignoran.
         }
-    };
+    }
 
     ///Manejo de jugada.
     public void Jugada(int fila, int columna){
@@ -179,7 +176,7 @@ public class ControladorJuego implements Controlador {
         //Cambia el color de la ultima jugada al normal.
         if(ultimoLOL == 0) {
             cambiarColorBoton(botones[ultimaJugada[0]][ultimaJugada[1]], "linear-gradient(#e4e4e4, #d6d6d6)");
-        };
+        }
 
         //Cambiando la letra del boton, el color de la letra, lo deshabilita y lo pone color amarillo.
         Button boton = botones[fila][columna];
@@ -209,7 +206,7 @@ public class ControladorJuego implements Controlador {
             consolaJuegoLog("Turno de ", jugadorActual.getTitulo());
         }
         juego();
-    };
+    }
 
     ///Método para terminar el juego.
     private void terminarJuego() {
@@ -226,13 +223,6 @@ public class ControladorJuego implements Controlador {
         // Mostrar mensaje de fin en la consola del juego.
         consolaJuegoLog(mensajeFinal);
         Console.log("El juego ha terminado.");
-
-        //Desactivar todos los botones.
-        for (int i = 0; i < botones.length; i++) {
-            for (int j = 0; j < botones[i].length; j++) {
-                botones[i][j].setDisable(true);
-            }
-        }
 
         javafx.application.Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -425,7 +415,7 @@ public class ControladorJuego implements Controlador {
 
     ///Retorna true si el botón está vacío,
     private boolean botonVacio(int fila, int columna) {
-        return letraBoton(fila,columna).equals("");
+        return letraBoton(fila, columna).isEmpty();
     }
 
     ///Retorna una lista con todas las coordenadas de los botones que están vacíos.
@@ -476,11 +466,6 @@ public class ControladorJuego implements Controlador {
             sb.append(movimiento).append("\n");
         }
         textArea.setText(sb.toString());
-    }
-
-    ///Imprime el texto del botón.
-    private void printButtonName(Button button) {
-        Console.log(Console.LogType.DEBUG, button.getText());
     }
 
     public Button[][] getBotones() {

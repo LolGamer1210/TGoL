@@ -9,7 +9,7 @@ import java.util.Random;
 public class CPU extends Jugador {
     private final ControladorJuego controlador;
     private static Button[][] botones;
-    private Random random;
+    private final Random random;
 
     public CPU(Jugador jugador) {
         super(jugador.getNombre(), jugador.getLetra(), jugador.esCPU(), jugador.getNumero());

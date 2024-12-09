@@ -14,7 +14,6 @@ import com.ingmonika.tgol.utils.URLHelper;
 import com.ingmonika.Console;
 
 //Controller implementations
-import com.ingmonika.tgol.implementaciones.Controlador;
 
 //Classes imports
 import com.ingmonika.tgol.clases.Settings;
@@ -23,9 +22,8 @@ import com.ingmonika.tgol.clases.Jugador;
 import java.io.IOException;
 
 public class Main extends Application {
-    public static String buildVersion = "Versión 1.1b";
+    public static String buildVersion = "Proyecto final de Programación II";
     private static Stage primaryStage;
-    private static Application appInstance;
     private static Jugador[] jugadores;
 
     ///Los ajustes del juego son accesibles a través de setters y getters.
@@ -49,7 +47,6 @@ public class Main extends Application {
 
 
         primaryStage = stage;
-        appInstance = this;
 
         // Pasando el HostServices al URLHelper
         URLHelper.setHostServices(getHostServices());
@@ -58,24 +55,20 @@ public class Main extends Application {
     }
 
     /// Carga una nueva escena al Stage.
-    ///
     /// @param fxml El archivo FXML a cargar.
     public static void loadScene(String fxml) {
         loadScene(fxml, primaryStage.getTitle());
     }
 
     /// Carga una nueva escena al Stage y cambia el titulo de la ventana.
-    ///
     /// @param fxml  El archivo FXML a cargar.
     /// @param title El nuevo título de la ventana.
+    @SuppressWarnings("CallToPrintStackTrace")
     public static void loadScene(String fxml, String title) {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource(fxml));
             BorderPane root = loader.load();
             Scene scene = new Scene(root);
-
-            // Interacciones con el controlador de ser necesarias
-            Controlador controller = loader.getController();
 
             // Cambiar escena en el Stage Primario
             primaryStage.setTitle(title);
@@ -90,11 +83,6 @@ public class Main extends Application {
     ///Retorna los ajustes actuales.
     public static Settings getGameSettings() {
         return gameSettings;
-    }
-
-    ///Configura un nuevo valor para los ajustes.
-    public static void setGameSettings(Settings gameSettings) {
-        Main.gameSettings = gameSettings;
     }
 
     ///Retorna un arreglo de jugadores.

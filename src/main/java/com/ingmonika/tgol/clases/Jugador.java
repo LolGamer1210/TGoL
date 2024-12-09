@@ -5,11 +5,11 @@ import com.ingmonika.tgol.controladores.ControladorJuego;
 ///Clase jugador, incluye el nombre, puntuación, letra de juego, y si es un CPU.
 public class Jugador {
     private ControladorJuego controlador;
-    private String nombre;
+    private final String nombre;
     private int puntuacion;
-    private String letra;
-    private boolean esCPU;
-    private int numero;
+    private final String letra;
+    private final boolean esCPU;
+    private final int numero;
     private String titulo;
     private String color = "#000000";
 
@@ -36,40 +36,20 @@ public class Jugador {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getPuntuacion() {
         return puntuacion;
-    }
-
-    public void setPuntuacion(int puntuacion) {
-        this.puntuacion = puntuacion;
     }
 
     public String getLetra() {
         return String.valueOf(letra);
     }
 
-    public void setLetra(String letra) {
-        this.letra = letra;
-    }
-
     public boolean esCPU() {
         return esCPU;
     }
 
-    public void setEsCPU(boolean esCPU) {
-        this.esCPU = esCPU;
-    }
-
     public int getNumero() {
         return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
     }
 
     public String getTitulo() {

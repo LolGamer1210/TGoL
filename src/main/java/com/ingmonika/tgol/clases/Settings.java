@@ -15,11 +15,6 @@ public class Settings {
     public Settings() {
     }
 
-    ///Retorna el tamaño del grid desde el objeto de settings.
-    public int getTamanioSeleccionado() {
-        return tamanioSeleccionado;
-    }
-
     ///Define el tamaño del grid en el objeto de settings.
     public void setTamanioSeleccionado(int tamanioSeleccionado) {
         this.tamanioSeleccionado = tamanioSeleccionado;
