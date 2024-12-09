@@ -2,7 +2,7 @@ module com.ingmonika.tgol {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
-    requires java.desktop;
+    requires javafx.graphics;
 
 
     opens com.ingmonika.tgol to javafx.fxml;
