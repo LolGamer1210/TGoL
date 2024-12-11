@@ -24,6 +24,8 @@ Durante la partida, podrás visualizar:
 2. Las letras asignadas a los jugadores (**L** u **O**) se generan aleatoriamente y no pueden ser seleccionadas manualmente.
 3. El objetivo de cada jugador es formar la palabra **LOL** para sumar puntos.
 
+   [Puedes ver una demostración aqui.](https://youtu.be/B0n2sQeZXkc) 
+
 ## DESCRIPCIÓN DEL DESARROLLO
 
 El proyecto fue desarrollado por el equipo compuesto por:
